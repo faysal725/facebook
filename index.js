@@ -16,6 +16,15 @@ app.use(express.json());
 // Enable CORS for all routes
 app.use(cors());
 
+
+// Manually set Access-Control-Allow-Origin for all responses
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
 mongoose
   .connect(
     "mongodb+srv://next-course:Ff123456789@cluster0.hozny.mongodb.net/playground?retryWrites=true&w=majority&appName=Cluster0",
