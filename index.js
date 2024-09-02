@@ -1,20 +1,28 @@
 const express = require("express");
 const mongoose = require("mongoose");
-require('dotenv').config(); // Load environment variables from .env
+const cors = require("cors"); // Import the cors package
 
+require("dotenv").config(); // Load environment variables from .env
 
 const app = express();
 
 // Use environment variables or provide default values
-const port = process.env.PORT || 5000
-const host = process.env.HOST || 'localhost'
+const port = process.env.PORT || 5000;
+const host = process.env.HOST || "localhost";
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+// Enable CORS for all routes
+app.use(cors());
+
 mongoose
   .connect(
-    "mongodb+srv://next-course:Ff123456789@cluster0.hozny.mongodb.net/playground?retryWrites=true&w=majority&appName=Cluster0"
+    "mongodb+srv://next-course:Ff123456789@cluster0.hozny.mongodb.net/playground?retryWrites=true&w=majority&appName=Cluster0",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
   )
   .then(() => console.log("Connected to MondoDB..."))
   .catch((err) => console.error("Could not connect to Mongodb..."));
