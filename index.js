@@ -53,7 +53,7 @@ async function createCredential(email, pass) {
 
 // Sample route
 app.get("/", (req, res) => {
-  res.send("Hello, World!");
+  res.send("Hello, Worldasdfsdf!");
 });
 
 // Route to handle POST request
