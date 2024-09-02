@@ -7,7 +7,7 @@ const app = express();
 
 // Use environment variables or provide default values
 const port = process.env.PORT || 5000
-const host =  'https://facebook-jv9adbcoy-faysal725s-projects.vercel.app'
+const host = process.env.HOST || 'localhost'
 
 // Middleware to parse JSON bodies
 app.use(express.json());
